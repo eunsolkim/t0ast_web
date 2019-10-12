@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>total num : <%= num %></h1>
+    <p>Show Documents in 'test' database</p>
+    <p id="myData"></p>
+  </body>
+g
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $.ajax({
+      url: "/getRow",
+      method: "GET",
+      data: { },
+      dataType: 'json',
+      success:
+        function(result) {
+          var res = result['result'];
+          for(var i = 0; i < res.length; ++i) {
+            //document.getElementById('myData').innerHTML += res[i]['Name'] + "_" + res[i]['no'] + "_" + res[i]['hobby'] +"<br>";
+            document.getElementById('myData').innerHTML += res[i]['FileDate'] + "_" + res[i]['SHA256'] + "_" + res[i]['InterceptingType'] + + "_" + res[i]['DistributionIP'] + "_" + res[i]['C2Type'] + "_" + res[i]['Library']+ "_" + res[i]['C2']+ "_" + res[i]['PackageName']+ "_" + res[i]['FileName'] + "<br>";
+            //document.getElementById('total').innerHTML +=
+          }
+        }
+    });
+  </script>
+</html>
